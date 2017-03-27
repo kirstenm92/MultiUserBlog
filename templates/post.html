@@ -1,0 +1,24 @@
+<div class="post">
+  <div class="post-heading">
+    <div class="post-title">
+      <a href="/blog/{{ p.key().id() }}">{{p.subject}}</a>
+    </div>
+
+    <div class="post-author"> <!-- I added in this div -->
+      Author: {{p.author}}
+    </div>
+
+    <div class="post-id"> <!-- Added to debug, remove later -->
+      Post ID: {{p.key().id() }}
+    </div>
+
+    <div class="post-date">
+      {{p.created.strftime("%b %d, %Y")}}
+    </div>
+  </div><br>
+
+  <div class="post-content">
+    {{p._render_text | safe}}
+  </div>
+</div>
+

@@ -1,0 +1,14 @@
+<br><br>
+<div class="comment">
+  <div class="comment-date">  <!-- comment header will have person's name, date created -->
+    {{ c.created.strftime("%b %d, %Y") }}
+  </div>
+
+  <div class="comment-author">
+    {{ c.author }}
+  </div>
+
+  <div class="comment-content">
+    {{ c._render_text | safe }}
+  </div>
+</div>

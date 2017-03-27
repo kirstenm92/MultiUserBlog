@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="posts">
+
+  {{post.render() | safe}}  <!-- escapes html -->
+
+  	{% if user.name == post.author %}
+
+		<br>
+		<a href="/blog/{{ post.key().id() }}/edit"><button class = 'button'>Edit</button></a>
+		<a href="/blog/{{ post.key().id() }}/delete"><button class = 'button'>Delete</button></a>
+		
+	{% endif %}
+
+		<a href="/blog/{{ post.key().id() }}/newcomment"><button class = 'button'>Write a comment</button></a>
+
+	{% if user.name != post.author %}
+
+		<a href="/blog/{{ post.key().id() }}/like"><button class = 'button'>like</button></a>
+
+	{% endif %}
+
+		Number of likes: {{ likes }}
+		<br><br>
+
+</div>
+
+<div class="comments">
+<div align="center"><b>Comments</b></div>
+	{% for c in comments %}
+
+		{% if c.post_id == post_id %}
+			{{ c.render() | safe }}
+
+			{% if user.name == c.author %}
+
+			<br>
+			<a href="/blog/{{ post.key().id() }}/editcomment/{{ c.key().id() }}"><button class = 'button'>Edit</button></a>
+			<a href="/blog/{{ post.key().id() }}/deletecomment/{{ c.key().id() }}"><button class = 'button'>Delete</button></a>
+			<br>
+
+			{% endif %}
+		{% endif %}
+	
+	{% endfor %}
+</div>
+
+{% endblock %}

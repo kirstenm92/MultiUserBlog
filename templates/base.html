@@ -1,0 +1,44 @@
+<!-- https://hello-world-158609.appspot.com -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/main.css">
+	<title>Writer's Corner Blog</title>
+</head>
+
+<body>
+
+	<!-- This webapp is created and maintained by Kirsten Meintjes of Cape Town, South Africa! -->
+	<div class="title">
+	<a href="/blog" class="main-title">Writer's Corner Blog</a>
+	<h2 align="center">A blog created for writers, by writers!</h2><br><br>
+	</div>
+
+	<div class="headicon">
+
+	{% if user %}  <!-- person logged in -->
+
+		<a href="/blog" class="icon">Home</a>
+		<a href="/blog/newpost" class="icon">New Post</a>
+		{{user.name}} (<a href="/logout" class="icon">logout</a>)
+
+	{% else %}  <!-- visitor to site -->
+
+		<a href="/blog" class="icon">Home</a>
+		<a href="/login" class="icon">Login</a>
+		<a href="/signup" class="icon">Sign up</a>
+
+
+	{% endif %}
+
+	</div>
+
+	<div id="content">
+
+	{% block content %}
+	{% endblock %}
+
+	</div>
+</body>
+</html>

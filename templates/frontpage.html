@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+	{% for p in posts %}
+		{{ p.render() | safe}}
+		
+		<br>
+
+		{% if user.name == p.author %}
+  	
+			<a href="/blog/{{ p.key().id() }}/edit"><button class = 'button'>Edit</button></a>
+			<a href="/blog/{{ p.key().id() }}/delete"><button class = 'button'>Delete</button></a>
+
+		{% endif %}
+
+		<a href="/blog/{{ p.key().id() }}/newcomment"><button class = 'button'>Write a comment</button></a>
+
+		<!-- <a href="/blog"><button class = 'button'>like</button></a>  -->
+		<!-- Number of likes: {{ p.likes }}  this code is returning 0, so have removed its display on front page -->
+
+		<br><br><br>
+
+	{% endfor %}
+
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>edit comment</h2>
+    
+    <form method="post" class="comment">
+        <label>
+            <div>Author: Me ({{ author }})</div>            
+        </label>
+
+        <label>
+            <div>comment</div>
+            <textarea name="content">{{ content }}</textarea>
+        </label>
+
+        <div class="error">{{ error }}</div>
+        <input type="submit">
+    </form>
+
+    <a href="/blog/{{ post.key().id() }}">Cancel</a>
+    
+{% endblock %}
